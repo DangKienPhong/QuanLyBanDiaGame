@@ -11,6 +11,10 @@ function remove(btn) {
     return row;
 }
 
+function thongbao() {
+    var row = confirm("Bạn có chắc muốn xoá không");
+    return row;
+}
 // function myCreateFunction() {
 //     var table = document.getElementById("myTable");
 //     var row = table.insertRow(0);
