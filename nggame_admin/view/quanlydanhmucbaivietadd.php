@@ -1,21 +1,4 @@
-<!doctype html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
-<!--[if gt IE 8]><!-->
-<html class="no-js" lang="">
-<!--<![endif]-->
 
-<head>
-   <?php include "layout/headerpage.php";?>
-
-</head>
-
-<body>
-    <!-- Left Panel -->
-    <?php include "layout/headerpannel.php";?>
-   
-        <!-- Header-->
 
         <div class="breadcrumbs">
             <div class="breadcrumbs-inner">
@@ -51,19 +34,16 @@
                                 <strong>Thêm danh mục bài viết</strong>
                             </div>
                             <div class="card-body card-block">
-                                <form action="controller/danhmucbaiviet-add-controller.php" method="POST" enctype="multipart/form-data" class="form-horizontal">                                   
-                                    <div class="row form-group">
-                                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Mã danh mục bài viết</label></div>
-                                        <div class="col-12 col-md-9"><input type="text" id="text-input" name="txt_Ma" placeholder="" class="form-control"></div>
-                                    </div>
+                                <form action="../controller/danhmucbaiviet-add-controller.php" method="POST" enctype="multipart/form-data" class="form-horizontal">                                   
+                                  
                                      <div class="row form-group">
                                         <div class="col col-md-3"><label for="text-input" class=" form-control-label">Tên danh mục bài viết</label></div>
-                                        <div class="col-12 col-md-9"><input type="text" id="text-input" name="txt_Ten" placeholder="" class="form-control"></div>
+                                        <div class="col-12 col-md-9"><input type="text" id="text-input" name="txt_ten" placeholder="" class="form-control"></div>
                                     </div>
                                                                       
                                     
                                     <div  style="float:right;">
-                                        <button type="submit" class="btn btn-primary " name="btn_Xuly" value="submit">
+                                        <button type="submit" class="btn btn-primary " name="submit" value="submit">
                                     <i class="fa ti-plus"></i> Thêm
                                 </button>
                                         <button type="reset" class="btn btn-warning" name="btn_Xuly" value="reset">
@@ -84,9 +64,4 @@
             </div><!-- .animated -->
         </div><!-- .content -->
 
-        <?php include "layout/footerpage.php";?>
-
-
-</body>
-
-</html>
+      

@@ -1,5 +1,4 @@
 
-
 <aside id="left-panel" class="left-panel">
         <nav class="navbar navbar-expand-sm navbar-default">
 
@@ -45,15 +44,15 @@
                     <li class="menu-item-has-children dropdown" >
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-pencil"></i>Quản lý bài viết</a>
                         <ul class="sub-menu children dropdown-menu">            
-                        <li><i class="fa ti-angle-double-right"></i><a href="quantri.php?page_layout=quanlybaivietadd">Hiển thị danh sách</a></li>
+                        <li><i class="fa ti-angle-double-right"></i><a href="quantri.php?page_layout=quanlybaiviet">Hiển thị danh sách</a></li>
                             <li><i class="fa ti-plus"></i><a href="quanly-baiviet-add.php">&nbsp;Thêm bài viết</a></li>
                         </ul>
                     </li>
                     <li class="menu-item-has-children dropdown" >
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="menu-icon fa  fa-bars"></i>Danh mục bài viết</a>
                         <ul class="sub-menu children dropdown-menu">            
-                        <li><i class="fa ti-angle-double-right"></i><a href="quantri.php?page_layout=quanlybaiviet">Hiển thị danh sách</a></li>
-                            <li><i class="fa ti-plus"></i><a href="quanlydanhmucbaivietadd.php">&nbsp;Thêm danh mục bài viết</a></li>
+                        <li><i class="fa ti-angle-double-right"></i><a href="quantri.php?page_layout=quanlydanhmucbaiviet">Hiển thị danh sách</a></li>
+                            <li><i class="fa ti-plus"></i><a href="quantri.php?page_layout=quanlydanhmucbaivietadd">&nbsp;Thêm danh mục bài viết</a></li>
                         </ul>
                     </li>
 
