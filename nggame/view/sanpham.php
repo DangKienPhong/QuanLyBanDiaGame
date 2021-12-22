@@ -141,7 +141,7 @@
                
             </div>
             <div style="text-align:center;">
-                <a href="shop-grid.php" class="primary-btn">Xem thêm</a>
+                <a href="index.php?page_layout=shop-grid" class="primary-btn">Xem thêm</a>
                 </div>
         </div>
 

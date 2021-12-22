@@ -1,13 +1,18 @@
+<?php
+ ob_start();
+ session_start();
+ include '../ketnoisql/ketnoi.php';
+?>
 <!DOCTYPE html>
 <html lang="zxx">
 
 <head>
-  <?php include"layout/headpage.php"; ?>
+  <?php include "layout/headpage.php"; ?>
 </head>
 
 <body>
     <!-- Menu -->
-    <?php include"layout/menupage.php"; ?>
+    <?php include "layout/menupage.php"; ?>
     <!-- Menu -->
 
 <!--    Master Page-->
@@ -22,6 +27,9 @@
         case 'shop-details':
             include_once './chucnang/sanpham/shop-details.php';
             break;
+        case 'shop-gridcategories':
+            include './chucnang/sanpham/shop-gridcategories.php';
+            break;
         case 'shoping-cart':
             include_once './chucnang/giohang/shoping-cart.php';
             break;
@@ -29,7 +37,10 @@
             include_once './chucnang/giohang/checkout.php';
             break;
         case 'blog':
-            include_once './chucnang/blog/blog.php';
+            include_once './chucnang/blog/blog-grid.php';
+            break;
+        case 'blog-categories':
+            include_once './chucnang/blog/blog-gridcategories.php';
             break;
         case 'blog-details':
             include_once './chucnang/blog/blog-details.php';
@@ -43,8 +54,9 @@
         case 'contact':
             include_once './chucnang/lienhe/contact.php';
             break;
-        case 'shop-categories':
-            include_once './chucnang/sanpham/categoriespage.php';
+        case 'danhsachtimkiem':
+            include_once './chucnang/timkiem/danhsachtimkiem.php';
+        
         }
     } else{
             include_once './index-content.php';
@@ -74,7 +86,7 @@
     
 
     <!-- Footer Section Begin -->
-   <?php include"layout/footerpage.php"; ?>
+   <?php include "layout/footerpage.php"; ?>
 
 
 
