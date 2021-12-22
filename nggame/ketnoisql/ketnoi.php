@@ -2,7 +2,7 @@
 $dbHost="localhost";
 $dbUser="root";
 $dbPass="";
-$dbName="nggame";
+$dbName="blalbalbalalall";
 $conn=mysqli_connect($dbHost,$dbUser,$dbPass,$dbName);
 if($conn){
     $setLang=mysqli_query($conn,"SET NAMES 'utf8'");
