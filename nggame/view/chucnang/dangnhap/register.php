@@ -47,26 +47,57 @@
                     </div>
                 </div>
             </div>
-            <form action="#">
+            
+<?php
+
+
+
+if(isset($_POST['submit'])){
+    $ten_user=$_POST['ten_user'];
+    $mat_khau=md5($_POST['mat_khau']);
+    $so_dien_thoai=$_POST['so_dien_thoai'];
+    $email=$_POST['email'];
+    $dia_chi=$_POST['dia_chi'];
+    if(isset($ten_user)&&isset($mat_khau)&&isset($so_dien_thoai)&&isset($email)&&isset($dia_chi)){
+        $sql="INSERT INTO users (ten_user,mat_khau,so_dien_thoai,email,dia_chi) VALUES ('$ten_user','$mat_khau','$so_dien_thoai','$email','$dia_chi')";
+        $query = mysqli_query($conn, $sql);
+        header("location:index.php?page_layout=login");
+        
+    }
+    else{
+        echo' <center class="alert alert-danger">Bạn chưa điền đầy đủ thông tin</center>';
+     }
+}
+
+?>
+            <form method="post">
                 <div class="row">
                     <div class="col-lg-11 col-md-11">
                         <span style="font-size:30px;">Tên tài khoản: </span>
-                        <input type="text" placeholder="Tên">
+                        <input type="text"  name="ten_user"required="required">
                     </div>
                     <div class="col-lg-11 col-md-11">
                     <span style="font-size:30px;">Email: </span>
-                        <input type="email" placeholder="Email">
+                        <input type="email" name="email"required="required">
                     </div>
                     <div class="col-lg-11 col-md-11">
                     <span style="font-size:30px;">Mật khẩu: </span>
-                        <input type="password" placeholder="Mật khẩu">
+                        <input type="password" name="mat_khau"required="required">
                     </div>
-                    <div class="col-lg-11 col-md-11">
+                    <!-- <div class="col-lg-11 col-md-11">
                     <span style="font-size:30px;">Nhập lại mật khẩu: </span>
                         <input type="password" placeholder="Nhập lại mật khẩu">
+                    </div> -->
+                    <div class="col-lg-11 col-md-11">
+                    <span style="font-size:30px;">Số điện thoại: </span>
+                        <input type="text" name="so_dien_thoai">
+                    </div>
+                    <div class="col-lg-11 col-md-11">
+                    <span style="font-size:30px;">Địa chỉ: </span>
+                        <input type="text"name="dia_chi">
                     </div>
                     <div class="col-lg-12 text-center">
-                        <button type="submit" class="site-btn">Đăng ký</button>
+                        <button type="submit" name="submit" class="site-btn">Đăng ký</button>
                     </div>
                 </div>
             </form>

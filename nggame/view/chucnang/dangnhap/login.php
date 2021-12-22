@@ -1,4 +1,5 @@
 
+
     <!-- Breadcrumb Section Begin -->
     <section class="breadcrumb-section set-bg" data-setbg="img/banner/banner5.jpg">
         <div class="container">
@@ -47,15 +48,42 @@
                     </div>
                 </div>
             </div>
-            <form action="#">
+            <?php
+if (isset($_POST['submit'])) {
+    $username = $_POST["txt_email"];
+    $passwd = $_POST["txt_password"];
+    if (isset($username) && isset($passwd)) {
+        $sql = "SELECT * FROM users WHERE email = '$username' AND mat_khau = '$passwd'";
+        $query = mysqli_query($conn, $sql);
+        $data=mysqli_fetch_assoc($query);
+
+        $rows = mysqli_num_rows($query);
+        if ($rows > 0) {
+            session_start();
+            $_SESSION['user'] = $data;
+            header("Location: ././index.php");
+        } 
+        else{
+           echo' <center class="alert alert-danger">Tài khoản hoặc mặt khẩu không tồn tại</center>';
+        }
+    }
+    else{
+        echo'<script>
+          alert("Hello! I am an alert box!");
+        </script>';
+    }
+   
+}
+?>
+            <form method="post">
                 <div class="row">
                     <div class="col-lg-11 col-md-11">
                         <span style="font-size:30px;">Tên tài khoản: </span>
-                        <input type="text" placeholder="Tên">
+                        <input type="email" placeholder="Tên" name="txt_email" required="required">
                     </div>
                     <div class="col-lg-11 col-md-11">
                     <span style="font-size:30px;">Mật khẩu: </span>
-                        <input type="password" placeholder="Mật khẩu">
+                        <input type="password" placeholder="Mật khẩu" name="txt_password"  required="required">
                     </div>
                     <div class="col-lg-11 text-right">
                    <p><a href="">Quên mật khẩu</a></p>
@@ -64,13 +92,13 @@
 <!--                    
 -->                    </div>
                     <div class="col-lg-12 text-center">
-                        <button type="submit" class="site-btn">Đăng nhập</button>
+                        <button type="submit" name="submit" class="site-btn">Đăng nhập</button>
                     </div>
                     </div>
                     
                 </div>
             </form><!--
-        </div>
+        </div> -->
 
     <!-- Contact Form End -->
  <!-- Contact Section Begin -->
