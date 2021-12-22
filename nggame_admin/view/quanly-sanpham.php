@@ -1,4 +1,10 @@
 
+<?php
+
+$sql = "SELECT * FROM sanpham INNER JOIN danhmucsp ON sanpham.id_danhmuc=danhmucsp.id_dm_sp 
+ORDER BY id_dm_sp ASC";
+$query = mysqli_query($conn, $sql);
+?>
         <div class="breadcrumbs">
             <div class="breadcrumbs-inner">
                 <div class="row m-0">
@@ -35,55 +41,38 @@
                             <div class="card-body">
                             <a href="quantri.php?page_layout=quanlysanphamadd"><button type="button" class="btn btn-primary btn-sm" style="float:right;">Thêm</button></a>
                                 <table id="bootstrap-data-table" class="table table-striped table-bordered">
-                                <thead>
-                                        <tr>
-                                            <th>STT</th>
+                                    <thead>
+                                        <tr >
                                             <th>Mã sản phẩm</th>
                                             <th>Tên sản phẩm</th>
-                                            <th>Ngày nhập</th>
-                                            <th>Loại sản phẩm</th>
-                                            <th>Số lượng</th>
-                                            <th>Đơn giá</th>
                                             <th>Tình trạng</th>
+                                            <th>Đơn giá</th>
+                                          
+                                            <th>Ảnh</th>
                                             <th>Chi tiết sản phẩm</th>
                                             <th>Hành động</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                     <?php
-                                    $arrStt = array(1, 2, 3, 4, 5, 6);
-                                    $arrMa = array("012340", "012341", "012342", "012343", "012344", "012345");
-                                    $arrTen = array("Very Easy Toeic 2 - Build Up", "3000 Từ Vựng Tiếng Anh Thông Dụng Nhất", "Hackers Ielts Speaking", "Bài Tập Từ Vựng Tiếng Anh Cơ Bản - Tập 2", "Lessons For Ielts Reading (Tái Bản 2018)", "Động Từ Bất Quy Tắt & Kiến Thức Anh Văn Căn Bản");
-                                    $arrNgayNhap = array("20/08/2021", "12/07/2020", "24/11/2020", "23/08/2021", "26/10/2020", "26/6/2020	");
-                                    $arrLoai = array("Tiếng Anh", "Tiếng Anh", "Tiếng Anh", "Tiếng Anh", "Tiếng Anh", "Tiếng Anh	");
-                                    $arrSoLuong = array("30","20","30","0","0","40");
-                                    $arrDonGia = array("₫142.000","₫128.000", "₫140.000", "₫76.000", "₫162.000", "₫230.000");
-                                    for($i=0;$i<count($arrStt);$i++){
-                                        echo ' <tr>';
-                                        echo ' <td>' . $arrStt[$i] . '</td>';
-                                        echo  ' <td>' . $arrMa[$i] . '</td>';
-                                        echo ' <td>' . $arrTen[$i] . '</td>';
-                                        echo ' <td>' . $arrNgayNhap[$i] . '</td>';
-                                        echo ' <td>' . $arrLoai[$i] . '</td>';
-                                        echo ' <td>' . $arrSoLuong[$i] . '</td>';
-                                        echo ' <td>' . $arrDonGia[$i] . '</td>';
-                                        //Tình trạng
-                                        if($arrStt[$i]==4){
-                                            echo '<td><button type="button" class="btn btn-danger btn-sm">Hết Hàng</button></td>';
-                                            }
-                                            else{
-                                                echo '<td><button type="button" class="btn btn-success  btn-sm">Còn Hàng</button></td>';
-                                            }
-                                        //Chi tiết sản phẩm
-                                        echo ' <td><a href="quanly-sanpham-chitiet.php"><button type="button" class="btn btn-link">Xem</button></a></td>';
-                                        //Hành động
-                                        echo '<td><a href="quanly-sanpham-edit.php"><button type="button" class="btn btn-secondary btn-sm">Sửa</button></a>
-                                                <button type="button" class="btn btn-warning btn-sm"onclick="remove(this)">Xoá</button>
-                                            </td>';
-                                        echo '</tr>';
-                                       
-                                        }
-    
+                                while ($row = mysqli_fetch_array($query)){ 
+                                ?>
+                                   <tr> 
+                                 
+                                    <td> <?php echo $row['id_sp']?></td>
+                                    <td><?php echo $row['ten_sp']?></td>
+                                    <td> <?php echo $row['tinh_trang']?></td>
+                                    <td> <?php echo number_format( $row['don_gia'], 0, '', '.')." VNĐ";?></td>
+                            
+                        
+                                    <td style="text-align:center;"><img width="100px" src="pictures/<?php echo $row['anh_sp']?>"></td>
+                                    <td><a href="quantri.php?page_layout=quanlysanphamchitiet&id_sp=<?php echo $row['id_sp'];?>"><button type="button" class="btn btn-link">Xem</button></a></td>
+                                    <td><a href="quantri.php?page_layout=quanlysanphamedit&id_sp=<?php echo $row['id_sp'];?>"><button type="button" class="btn btn-secondary btn-sm">Sửa</button></a>
+                                    <a href="../controller/sanpham-remove-controller.php?id_sp=<?php echo $row['id_sp'];?>"> <button type="button" class="btn btn-warning btn-sm" onclick="remove(this)">Xoá</button></a>
+                                    </td>
+                                    </tr>
+                                    <?php
+                                    }
                                     ?>
                                     </tbody>
 

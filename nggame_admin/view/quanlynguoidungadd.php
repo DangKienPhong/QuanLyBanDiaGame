@@ -1,5 +1,7 @@
 
-<?php include '../controller/nguoidungAddController.php' ?>
+<?php
+include_once "../controller/nguoidungAddController.php";
+?>
         <div class="breadcrumbs">
             <div class="breadcrumbs-inner">
                 <div class="row m-0">

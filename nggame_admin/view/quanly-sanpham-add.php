@@ -1,4 +1,8 @@
 
+<?php
+include_once '../controller/sanpham-add-controller.php';
+
+?>
         <div class="breadcrumbs">
             <div class="breadcrumbs-inner">
                 <div class="row m-0">
@@ -33,81 +37,86 @@
                                 <strong>Thêm sản phẩm</strong>
                             </div>
                             <div class="card-body card-block">
-                                <form action="controller/sanpham-add-controller.php" method="POST" enctype="multipart/form-data" class="form-horizontal">
+                                <form  method="POST" enctype="multipart/form-data" class="form-horizontal">
                     
-                                    <div class="row form-group">
-                                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Mã sản phẩm</label></div>
-                                        <div class="col-12 col-md-9"><input type="text" id="text-input" name="txt_ma" placeholder="nhập mã sản phẩm" class="form-control"></div>
-                                    </div>
+        
                                     <div class="row form-group">
                                         <div class="col col-md-3"><label for="text-input" class=" form-control-label">Tên sản phẩm</label></div>
-                                        <div class="col-12 col-md-9"><input type="text" id="name-input" name="txt_ten" placeholder="nhập tên sản phẩm" class="form-control"></div>
+                                        <div class="col-12 col-md-9"><input type="text" id="name-input" name="ten_sp" placeholder="Nhập tên sản phẩm" class="form-control"></div>
                                     </div>
                                     <div class="row form-group">
-                                        <div class="col col-md-3"><label for="date-input" class=" form-control-label">Ngày nhập</label></div>
-                                        <div class="col-12 col-md-9"><input type="datetime-local" id="date-input" name="txt_ngaynhap" placeholder="nhập ngày nhập sản phẩm" class="form-control"></div>
+                                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Hệ máy</label></div>
+                                        <div class="col-12 col-md-9"><input type="text" id="name-input" name="he_may" placeholder="Nhập hệ máy" class="form-control"></div>
                                     </div>
                                     <div class="row form-group">
-                                        <div class="col col-md-3"><label for="date-input" class=" form-control-label">Số lượng</label></div>
-                                        <div class="col-12 col-md-9"><input type="number" id="soluong-input" name="txt_soluong" placeholder="nhập số lượng sản phẩm" class="form-control"></div>
-                                    </div>
-                                    <div class="row form-group">
-                                        <div class="col col-md-3"><label for="textarea-input" class=" form-control-label">Nội dung chi tiết</label></div>
-                                        <div class="col-12 col-md-9"><textarea name="txt_noidung" id="txt_noidung" rows="9" placeholder="Nhập nội dung tại đây" class="form-control"></textarea></div>
-                                    </div>
-                                    <div class="row form-group">
-                                        <div class="col col-md-3"><label for="select" class=" form-control-label">Chọn loại Sản phẩm</label></div>
-                                        <div class="col-12 col-md-9">
-                                            <select name="sel_theloai" id="select-input" class="form-control">
-                                                <option value="0">Xin chọn thể loại sách</option>
-                                                <option value="Tiếng anh">Tiếng anh</option>
-                                                <option value="Tiếng trung">Tiếng trung</option>
-                                                <option value="Tiếng pháp">Tiếng pháp</option>
-                                                <option value="Tiếng hàn">Tiếng hàn</option>
-                                                <option value="Lớp 1 -> lớp 6">Lớp 1 -> lớp 6</option>
-                                                <option value="Lớp 7 -> lớp 12">Lớp 7 -> lớp 12</option>
-                                                <option value="Kỹ năng nấu ăn">Kỹ năng nấu ăn</option>
-                                                <option value="Rèn luyện tinh thần">Rèn luyện tinh thần</option>
-                                                <option value="Phát triển bản thân">Phát triển bản thân</option>
-                                                <option value="Phát triển tư duy - kỹ năng mềm">Phát triển tư duy - kỹ năng mềm</option>
-                                                <option value="Nhân vật - Bài học kinh doanh">Nhân vật - Bài học kinh doanh</option>
-                                                <option value="Marketing - Bán Hàng">Marketing - Bán Hàng</option>
-                                                <option value="Khởi nghiệp - Làm giàu">Khởi nghiệp - Làm giàu</option>
-                                                <option value="Phân tích kinh tể">Phân tích kinh tể</option>
-                                                <option value="Tài chính ngân hàng">Tài chính ngân hàng</option>
-                                                <option value="Shounen">Shounen</option>
-                                                <option value="Fantasy">Fantasy</option>
-                                                <option value="Drama">Drama</option>
-                                                <option value="Action">Action</option>
-                                                <option value="Mystery">Mystery</option>
-                                                <option value="Tiểu thuyết">Tiểu thuyết</option>
-                                                <option value="Truyện ngắn - Tản văn">Truyện ngắn - Tản văn</option>
-                                                <option value="Tác phẩm kinh điển">Tác phẩm kinh điển</option>
-                                                <option value="Ngôn tình">Ngôn tình</option>
-                                                <option value="Thể loại khác">Thể loại khác</option>
+                                        <div class="col col-md-3"><label class=" form-control-label">Tình trạng</label></div>
+                                        <div class="col col-md-9">
+                                            <div class="form-check">
+                                                <div class="radio">
+                                                    <label for="radio1" >
+                                                        <input type="radio" id="radio1" name="tinh_trang" value="Còn hàng" checked="checked" class="form-check-input">Còn hàng
+                                                    </label>
+                                                    <label for="radio2" class="form-check-label ">
+                                                        <input type="radio" id="radio2" name="tinh_trang" value="Hết hàng" class="form-check-input">Hết hàng
+                                                    </label>
+                                                </div>
 
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label for="select" class=" form-control-label">Chọn thể loại</label></div>
+                                        <div class="col-12 col-md-9">
+                                            <select name="id_dm_sp" id="select-input" class="form-control">
+                                                <option value="unselect">Xin chọn thể loại</option>
+                                                <?php 
+                                               while ($row = mysqli_fetch_array($query)){
+                                                ?>
+                                                <option value="<?php echo $row['id_dm_sp']?>"><?php echo $row['ten_dm_sp']?></option>
+                        
+                                                <?php
+                                                }
+                                                ?>
                                             </select>
                                         </div>
                                     </div>
-                                    
                                     <div class="row form-group">
-                                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Đơn giá</label></div>
-                                        <div class="col-12 col-md-9"><input type="text" id="stt-input" name="txt_giatien" placeholder="nhập đơn giá của sản phẩm" class="form-control"></div>
+                                        <div class="col col-md-3"><label for="select" class=" form-control-label">Chọn nhà cung cấp</label></div>
+                                        <div class="col-12 col-md-9">
+                                            <select name="id_ncc" id="select-input" class="form-control">
+                                                <option value="unselect">Xin chọn nhà cung cấp</option>
+                                                <?php 
+                                               while ($rowcc = mysqli_fetch_array($querycc)){
+                                                ?>
+                                                <option value="<?php echo $rowcc['id_ncc']?>"><?php echo $rowcc['ten_ncc']?></option>
+                        
+                                                <?php
+                                                }
+                                                ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                  
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label for="number-input" class=" form-control-label">Đơn giá</label></div>
+                                        <div class="col-12 col-md-9"><input type="number" id="stt-input" name="don_gia" placeholder="nhập đơn giá của sản phẩm" class="form-control"></div>
                                     </div>
                                     
                                     <div class="row form-group">
-                                        <div class="col col-md-3"><label for="file-input" class=" form-control-label">Hình ảnh sản phẩm</label></div>
-                                        <div class="col-12 col-md-9"><input type="file" id="file-input" name="file_upload" class="form-control-file"></div>
+                                        <div class="col col-md-3"><label for="file-input" class=" form-control-label" >Hình ảnh sản phẩm</label></div>
+                                        <div class="col-12 col-md-9"><input type="file" id="file-input" name="anh_sp" class="form-control-file" multiple></div>
                                     </div>
-                                    <!-- <div class="row form-group">
-                                        <div class="col col-md-3"><label for="file-multiple-input" class=" form-control-label">Multiple File input</label></div>
-                                        <div class="col-12 col-md-9"><input type="file" id="file-multiple-input" name="file-multiple-input" multiple="" class="form-control-file"></div>
-                                    </div> -->
+                                    
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label for="file-input" class=" form-control-label" >Nội dung</label></div>
+                                        <div class="col-12 col-md-9"><textarea rows="10" cols="83" name="noi_dung"   ></textarea></div>
+                                    </div>
+
                                     <div  style="float:right;">
-                                <button type="submit" class="btn btn-primary " name="bnt_XuLy" value="submit">
+                                <button type="submit" class="btn btn-primary " name="submit" value="submit">
                                     <i class="fa ti-plus"></i> Thêm
                                 </button>
-                                <button type="submit" class="btn btn-warning" name="bnt_XuLy" value="reset">
+                                <button type="submit" class="btn btn-warning" name="reset" value="reset">
                                     <i class="fa ti-reload"></i> Reset
                                 </button>
                             </div>
@@ -125,4 +134,3 @@
             </div><!-- .animated -->
         </div><!-- .content -->
 
-        <?php include "layout/footerpage.php";?>

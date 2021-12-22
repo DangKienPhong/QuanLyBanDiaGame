@@ -7,6 +7,8 @@ function remove(btn) {
     var row1 = btn.parentNode.parentNode;
     if (row == true) {
         row1.parentNode.removeChild(row1);
+    } else {
+        cancel();
     }
     return row;
 }
