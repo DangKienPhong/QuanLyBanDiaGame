@@ -1,14 +1,28 @@
+<script>
+    function searchFocus(){
+        if(document.searchform.searchtext.value=='Bạn cần tìm gì ?')
+        {
+            document.searchform.searchtext.value='';
+        }
+    }
+    function searchBlur(){
+        if(document.searchform.searchtext.value=='')
+        {
+            document.searchform.searchtext.value='Bạn cần tìm gì ?';
+        }
+    }
+</script>
 <div class="hero__search">
                         <div class="hero__search__form">
-                            <form action="#">
+                            <form method="POST" action="index.php?page_layout=danhsachtimkiem" name="searchform">
                                 <!-- <div class="hero__search__categories">
                                     All Categories
                                     <span class="arrow_carrot-down"></span>
                                     
                                 </div> -->
                                 
-                                <input type="text" placeholder="What do yo u need?">
-                                <button type="submit" class="site-btn">SEARCH</button>
+                                <input onfocus="searchFocus();" onblur="searchBlur();" type="text" name="searchtext" value="Bạn cần tìm gì ?">
+                                <button type="submit" name="submit" value="" class="site-btn">SEARCH</button>
                             </form>
                         </div>
                         <div class="hero__search__phone">
