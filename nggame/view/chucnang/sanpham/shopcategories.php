@@ -1,25 +1,6 @@
 <div class="col-lg-3 col-md-5">
                     <div class="sidebar">
-                    <div class="hero__categories">
-                        <div class="hero__categories__all">
-                            <i class="fa fa-bars"></i>
-                            <span>Thể loại</span>
-                        </div>
-                        <ul>
-                            <li><a href="#">Action</a></li>
-                            <li><a href="#">Action Adventure</a></li>
-                            <li><a href="#">Adventure</a></li>
-                            <li><a href="#">Arcade/Puzzle</a></li>
-                            <li><a href="#">FPS</a></li>
-                            <li><a href="#">Family/Party</a></li>
-                            <li><a href="#">Fighting</a></li>
-                            <li><a href="#">Horror</a></li>
-                            <li><a href="#">RPG</a></li>
-                            <li><a href="#">Shooter</a></li>
-                            <li><a href="#">Sports</a></li>
-                            <li><a href="#">Strategy/Sim</a></li>
-                        </ul>
-                    </div>
+                    <?php include 'danhmuc.php';?>
 <!--                        Module Phân loại theo giá-->
                         <?php
                         include_once './chucnang/phanloaitheogia/phanloaitheogia.php';
