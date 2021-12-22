@@ -19,7 +19,7 @@
 
     <!-- Shoping Cart Section Begin -->
     <section class="shoping-cart spad">
-    <?php
+        <?php
         if(isset($_SESSION['giohang'])){
             if(isset($_POST['sl'])){
                 foreach($_POST['sl'] as $id_sp=>$sl){
@@ -45,7 +45,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="shoping__cart__table">
-                  
+                       
                         <table>
                             <thead>
                                 <tr>
@@ -56,21 +56,19 @@
                                     <th></th>
                                 </tr>
                             </thead>
-                            <?php 
-                            $totalPriceAll=0;
+                            <?php $totalPriceAll=0;
                             while($row = mysqli_fetch_array($query)) {
                                     $totalPrice=$row['don_gia']*$_SESSION['giohang'][$row['id_sp']];
                                     $totalPriceAll=$totalPriceAll+ $totalPrice;
-                                                                
-                            ?>
+                                                                ?>
                             <tbody>
                                 <tr>
                                     <td class="shoping__cart__item">
-                                        <img src="../../nggame_admin/view/pictures/<?php echo $row['anh_sp']?>" alt="">
+                                        <img src="../adminpage/pictures/<?php echo $row['anh_sp']?>" alt="">
                                         <h5><?php echo $row['ten_sp']?></h5>
                                     </td>
                                     <td class="shoping__cart__price">
-                                    <?php  echo number_format($row['don_gia'], 0, '', '.')." VNĐ"; ?>
+                                    <?php echo $row['don_gia']?>
                                     </td>
                                     <td class="shoping__cart__quantity">
                                         <div class="quantity">
@@ -80,22 +78,14 @@
                                         </div>
                                     </td>
                                     <td class="shoping__cart__total">
-                                    <?php echo number_format( $totalPrice, 0, '', '.')." VNĐ"; ?>
-                                   
+                                    <?php echo $totalPrice?>
                                     </td>
                                     <td class="shoping__cart__item__close">
-                                
-                                    <a href="chucnang/giohang/xoahang.php?id_sp=<?php echo $row['id_sp']?> "><span class="icon_close"></span></a>
-                                 
-                                
-                                       
-                                    
+                                    <a href="chucnang/giohang/xoahang.php?id_sp=<?php echo $row['id_sp']?>" class="icon_close">
                                     </td>
                                 </tr>
                             </tbody>
-                            <?php
-                             }
-                            ?>
+                           
                         </table>
                     </div>
                 </div>
@@ -103,9 +93,9 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="shoping__cart__btns">
-                    <button class="primary-btn cart-btn cart-btn-right"><a href="./index.php?page_layout=shop-grid" >Tiếp tục mua hàng</a></button>
-                    <button class="primary-btn "><a href="#" onclick="document.getElementById('giohang').submit();"> Cập nhật giỏ hàng </a></button>
-                    <button class="primary-btn"><a href="chucnang/giohang/xoahang.php?id_sp=0" onclick="document.getElementById('giohang').submit();">Xoá hết</a></button>
+                        <a href="shop-grid.php" class="primary-btn cart-btn">Tiếp tục mua hàng</a>
+                        <a href="#" class="primary-btn cart-btn cart-btn-right" onclick="document.getElementById('giohang').submit();"><span class="icon_loading"></span>
+                            Upadate Cart</a>
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -121,30 +111,27 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="shoping__checkout">
+                   
                         <h5>Tổng cộng giỏ hàng</h5>
                         <ul>
-                            <li>Tổng tiền tạm tính <span><?php echo number_format( $totalPriceAll, 0, '', '.')." VNĐ";?></span></li>
-                            <li>Tổng tiền <span><?php echo number_format( $totalPriceAll, 0, '', '.')." VNĐ";?></span></li>
+                            <li>Tổng tiền tạm tính <span><?php echo $totalPriceAll;?></span></li>
+                            <li>Tổng tiền <span><?php echo $totalPriceAll;?></span></li>
                         </ul>
-                        <button class="primary-btn"><a href="index.php?page_layout=checkout" >Thanh toán</a></button>
+                        <a href="checkout.php" class="primary-btn">Thanh toán</a>
                     </div>
                 </div>
             </div>
-       
+            <?php
+                             }
+                            ?>
         </div>
-        
-        </form>
         <?php
         }
         else{
-            echo'<h1 style="text-align: center;">Chưa có sản phẩm nào trong giỏ hàng.</h1>';
-           echo' <div style="text-align: center;">
-            <button class="primary-btn"><a href="index.php?page_layout=shop-grid" >Quay trở lại cửa hàng</a></button>
-            </div>';
-            
+                echo "Khong co don hang";
         }
         ?>
-       
+        </form>
+      
     </section>
-  
     <!-- Shoping Cart Section End -->

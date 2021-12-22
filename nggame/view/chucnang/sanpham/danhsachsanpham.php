@@ -1,6 +1,13 @@
-<?php
 
-include_once "../controller/shopgridcontroller.php";
+    <!-- Breadcrumb Section Begin -->
+    <?php
+$id_dm_sp=$_GET["id_dm_sp"];
+$sqldm="SELECT * FROM danhmucsp WHERE id_dm_sp=$id_dm_sp";
+$querydm=mysqli_query($conn,$sqldm); 
+$rowdm=mysqli_fetch_array($querydm);
+$sqlsp="SELECT * FROM sanpham WHERE id_danhmuc=$id_dm_sp ORDER BY DESC"; 
+$querysp=mysqli_query($conn,$sqlsp);
+
 ?>
     <section class="breadcrumb-section set-bg" data-setbg="img/banner/banner5.jpg">
         <div class="container">
@@ -10,7 +17,8 @@ include_once "../controller/shopgridcontroller.php";
                         <h2>NG Game Shop</h2>
                         <div class="breadcrumb__option">
                             <a href="./index.php">Trang chủ</a>
-                            <span>Shop</span>
+                            <a href="index.php?page_layout=shop-grid">Shop</a>
+                            <span><?php echo $rowdm['ten_dm_sp']; ?></span>
                         </div>
                     </div>
                 </div>
@@ -55,27 +63,22 @@ include_once "../controller/shopgridcontroller.php";
                 </div>
                 <div class="row">
                    <?php
-                   //Duyệt tất cả sản phẩm đang có trong database
                     while ($row = mysqli_fetch_array($querysp)){
                     ?>
                     <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="featured__item">
-    
-                        <div class="featured__item__pic set-bg" data-setbg="../../nggame_admin/view/pictures/<?php echo $row['anh_sp']?>">
-                                <ul class="featured__item__pic__hover">
+                        <div class="product__item">
+                        <div class="featured__item__pic set-bg" data-setbg="../adminpage/pictures/<?php echo $row['anh_sp']?>">
+                                <ul class="product__item__pic__hover">
                                 <li><a href="index.php?page_layout=shop-details&id_sp=<?php echo $row['id_sp']; ?>"><i class="fa fa-search"></i></a></li>
-                                    <li><a href="index.php?page_layout=shop-grid"><i class="fa fa-retweet"></i></a></li>
+                                <li><a href="index.php?page_layout=shop-grid"><i class="fa fa-retweet"></i></a></li>
                                     <li><a href="chucnang/giohang/themhang.php?id_sp=<?php echo $row['id_sp']?>"><i class="fa fa-shopping-cart"></i></a></li>
                                 </ul>
                             </div>
                             <div class="featured__item__text">
                             <h6><a href="index.php?page_layout=shop-details&id_sp=<?php echo $row['id_sp']; ?>"><?php echo $row['ten_sp']; ?></a></h6>
-                            <h5><?php  echo number_format($row['don_gia'], 0, '', '.')." VNĐ"; ?></h5>
-            
-
+                            <h5><?php   echo number_format($row['don_gia'], 0, '', '.')." VNĐ"; ?></h5>
                         </div>
                         </div>
-                  
                     </div>
                     <?php }?>
                     <!-- <div class="col-lg-4 col-md-6 col-sm-6">
@@ -181,15 +184,10 @@ include_once "../controller/shopgridcontroller.php";
                     </div>
                    -->
                 </div>
-                <div class="product__pagination">
-                    <?php
-                        //module thanh số trang 1 2 3
-                        //include_once './chucnang/thanhsotrang/thanhsotrang-shop-grid.php';
-                        echo $listpage;
-                        
-                    ?>
-                </div>
-                
+                <?php
+                //module thanh số trang 1 2 3
+                include_once './chucnang/thanhsotrang/thanhsotrang-shop-grid.php';
+                ?>
             </div>
         </div>
         </div>
