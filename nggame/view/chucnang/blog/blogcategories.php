@@ -1,3 +1,7 @@
+<?php
+
+include_once "../controller/blogcategoriescontroller.php";
+?>
  <!-- Blog Section Begin -->
  <section class="blog spad">
         <div class="container">
@@ -12,42 +16,39 @@
                         </div>
                         <div class="blog__sidebar__item">
                             <h4>Chuyên mục</h4>
+                            <?php
+                                while ($row_dm = mysqli_fetch_array($query_dm)) 
+                                {   
+                            ?>
                             <ul>
-                                <li><a href="#">Gaming (20)</a></li>
-                                <li><a href="#">Hướng dẫn (5)</a></li>
-                                <li><a href="#">News(9)</a></li>
+                                <li><a href="index.php?page_layout=blog-categories&id_dm_bv=<?php echo $row_dm['id_dm_bv'] ?>"><?php echo $row_dm['ten_dm_bv'] ?></a></li> 
                             </ul>
+                            <?php
+                                }
+                            ?>
                         </div>
                         <div class="blog__sidebar__item">
                             <h4>Bài đăng mới nhất</h4>
                             <div class="blog__sidebar__recent">
-                                <a href="blog-details.php" class="blog__sidebar__recent__item">
+                            <?php
+                                while ($row_bv = mysqli_fetch_array($query_bv)) 
+                                {   
+                            ?>
+                                <a href="index.php?page_layout=blog-details&id_bv=<?php echo $row_bv['id_bv'] ?>" class="blog__sidebar__recent__item">
                                     <div  class="blog__sidebar__recent__item__pic">
-                                        <img src="img/blog/dmc.jpg" alt="">
+                                        <img src="img/blog/<?php echo $row_bv['ten_hinhanh']; ?>" alt="">
                                     </div>
                                     <div class="blog__sidebar__recent__item__text">
-                                        <h6>Devil May Cry 5: Special Edition sắp ra mắt với nhiều cải tiến</h6>
-                                        <span>15/11/2021</span>
+                                        <h6><?php echo $row_bv['ten_bv'] ?></h6>
+                                        <span><?php echo $row_bv['ngay_tao'] ?></span>
                                     </div>
                                 </a>
-                                <a href="blog-details.php" class="blog__sidebar__recent__item">
-                                    <div class="blog__sidebar__recent__item__pic">
-                                    <img src="img/blog/maxresdefault (1).jpg" alt="">
-                                    </div>
-                                    <div class="blog__sidebar__recent__item__text">
-                                        <h6>Đánh giá Spider-Man: Miles Morales – Nhện chuẩn “nhọ” phiêu lưu ký</h6>
-                                        <span>15/11/2021</span>
-                                    </div>
-                                </a>
-                                <a href="blog-details.php" class="blog__sidebar__recent__item">
-                                    <div class="blog__sidebar__recent__item__pic">
-                                    <img src="img/blog/the-witcher-3.jpg" alt="">
-                                    </div>
-                                    <div class="blog__sidebar__recent__item__text">
-                                        <h6>Phiên bản The Witcher 3: Wild Hunt dành cho console next-gen sẽ cập bến vào nửa cuối 2021</h6>
-                                        <span>15/11/2021</span>
-                                    </div>
-                                </a>
+
+                                
+                            <?php
+                                }
+                            ?>
+                                
                             </div>
                         </div>
                         <!-- <div class="blog__sidebar__item">
